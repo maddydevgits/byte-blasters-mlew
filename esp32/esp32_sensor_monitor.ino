@@ -6,7 +6,7 @@
 #include "MAX30105.h"
 #include "heartRate.h"
 #include "spo2_algorithm.h"
-#include "ADXL345.h"
+#include <Adafruit_ADXL345_U.h>
 
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
@@ -20,7 +20,7 @@ char pass[] = "123456789";
 
 // Sensor objects
 MAX30105 particleSensor;
-ADXL345 accelerometer;
+Adafruit_ADXL345_Unified accelerometer = Adafruit_ADXL345_Unified(12345);
 
 const byte RATE_SIZE = 4;
 byte rates[RATE_SIZE];
@@ -40,6 +40,7 @@ int32_t heartRate;
 int8_t validHeartRate;
 
 // Accelerometer variables
+sensors_event_t event;
 float accelX, accelY, accelZ;
 float totalAcceleration;
 float accelerationThreshold = 2.0; // g-force threshold (adjust as needed)
@@ -117,7 +118,10 @@ void readAllSensors() {
   int soundValue = analogRead(SOUND_PIN);
 
   // Read accelerometer data
-  accelerometer.getEvent(&accelX, &accelY, &accelZ);
+  accelerometer.getEvent(&event);
+  accelX = event.acceleration.x;
+  accelY = event.acceleration.y;
+  accelZ = event.acceleration.z;
   
   // Calculate total acceleration magnitude
   totalAcceleration = sqrt(accelX * accelX + accelY * accelY + accelZ * accelZ);

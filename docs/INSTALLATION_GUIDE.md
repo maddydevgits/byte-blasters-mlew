@@ -39,6 +39,8 @@
 1. Go to Tools → Manage Libraries
 2. Install the following libraries:
    - **SparkFun MAX3010x Pulse and Proximity Sensor Library** by SparkFun Electronics
+   - **Blynk** by Volodymyr Shymanskyy
+   - **Adafruit ADXL345** by Adafruit
    - **ArduinoJson** by Benoit Blanchon
 
 #### Configure Arduino IDE for ESP32

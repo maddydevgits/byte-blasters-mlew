@@ -27,7 +27,7 @@ The MAX30102 is an I2C sensor that measures heart rate and temperature.
 - Place finger on sensor for accurate readings
 
 ### ADXL345 Accelerometer Sensor
-The ADXL345 is an I2C sensor that measures acceleration in 3 axes.
+The ADXL345 is an I2C sensor that measures acceleration in 3 axes. Uses Adafruit ADXL345 library.
 
 **Connections:**
 - VCC → ESP32 3.3V
@@ -41,6 +41,7 @@ The ADXL345 is an I2C sensor that measures acceleration in 3 axes.
 - Measures acceleration in X, Y, Z axes
 - Range: ±16g (configurable)
 - Used for fall detection and movement monitoring
+- Uses Adafruit ADXL345 library for easy integration
 
 ### LDR (Light Dependent Resistor) Sensor
 Digital light detection sensor.
